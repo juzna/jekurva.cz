@@ -23,7 +23,7 @@ $container->router[] = new Route('//[!<domain>]/', function(\NetteModule\MicroPr
 	$db = $container->nette->database->default;
 
 	// Parse domain
-	if ( ! preg_match('/^(?:(.+)\.)?(\w+\.\w+)$/', $domain, $match)) throw new \Nette\Application\BadRequestException('Wrong domain name');
+	if ( ! preg_match('/^(?:(.+)\.)?([-\w]+\.\w+)$/', $domain, $match)) throw new \Nette\Application\BadRequestException('Wrong domain name');
 	list (, $name, $domain) = $match;
 
 	$reservedNames = array(
@@ -47,8 +47,14 @@ $container->router[] = new Route('//[!<domain>]/', function(\NetteModule\MicroPr
 			));
 
 			return $presenter->redirectUrl("//$name.$site->domain/");
+
 	}
 
+	// neni zadana domena
+	if ( ! $name) {
+		$who = $db->table('who')->where(array('site' => $site->id))->order('RAND()')->fetch();
+		return $presenter->redirectUrl("//$who->name.$site->domain/");
+	}
 
 	// create template
 	$tpl = $presenter->createTemplate()

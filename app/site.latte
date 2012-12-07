@@ -18,21 +18,19 @@
 </head>
 
 <body>
+<div class="kurva">
 	{if $who}
-		<span>{$who->jmeno}</span> je <a href="{$who->link}" n:tag-if="$who->link">kurva</a>!
+		<a href="{$who->link}" n:tag-if="$who->link">{$who->jmeno}</a> {$site->name}!
 
-	{elseif $name}
+	{else}
 		<form method="post" action="?do=save">
-			<input type="text" name="jmeno"> je kurva!<br>
-			Odkaz: <input type="url" name="link"><br>
+			<input type="text" name="jmeno"> {$site->name}!<br>
+			<input type="url" name="link" placeholder="odkaz (facebook, lidé, ...)" size="60"><br>
 			<input type="submit" value="Pamatuj si to.">
 		</form>
 
-	{else}
-
-		zadna domena
 	{/if}
-
+</div>
 
 	<script src="{$basePath}/js/jquery.js"></script>
 {*
