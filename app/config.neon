@@ -1,0 +1,20 @@
+php:
+	date.timezone: Europe/Prague
+
+parameters:
+	database:
+		driver: mysql
+		host: localhost
+		dbname: jekurva
+		user:
+		password:
+
+nette:
+	database:
+		default:
+			dsn: '%database.driver%:host=%database.host%;dbname=%database.dbname%'
+			user: %database.user%
+			password: %database.password%
+
+services:
+

@@ -1,0 +1,49 @@
+{*
+ Available vars:
+
+ $site
+ $who
+ $name
+*}
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>{block title|striptags|trim}{$site->name}{/block}</title>
+
+	<link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/css/screen.css" type="text/css">
+	<link href='http://fonts.googleapis.com/css?family=Sacramento&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+	{*<link rel="shortcut icon" href="{$basePath}/favicon.ico" type="image/x-icon">*}
+	<link rel="canonical" href="{$context->httpResponse->headers[Content-Location]}" n:ifset="$context->httpResponse->headers[Content-Location]">
+</head>
+
+<body>
+	{if $who}
+		<span>{$who->jmeno}</span> je <a href="{$who->link}" n:tag-if="$who->link">kurva</a>!
+
+	{elseif $name}
+		<form method="post" action="?do=save">
+			<input type="text" name="jmeno"> je kurva!<br>
+			Odkaz: <input type="url" name="link"><br>
+			<input type="submit" value="Pamatuj si to.">
+		</form>
+
+	{else}
+
+		zadna domena
+	{/if}
+
+
+	<script src="{$basePath}/js/jquery.js"></script>
+{*
+	<script src="http://www.google-analytics.com/ga.js"></script>
+	<script>
+	<!--
+		var pageTracker = _gat._getTracker("UA-123456");
+		pageTracker._initData();
+		pageTracker._trackPageview();
+	-->
+	</script>
+*}
+</body>
+</html>
