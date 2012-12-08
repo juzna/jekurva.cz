@@ -1,0 +1,42 @@
+{*
+ Available vars:
+
+ $foto
+*}
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>{block title|striptags|trim}Farba Farbič{/block}</title>
+
+	<link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/css/screen.css" type="text/css">
+	<link href='http://fonts.googleapis.com/css?family=Sacramento&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+	{*<link rel="shortcut icon" href="{$basePath}/favicon.ico" type="image/x-icon">*}
+	<link rel="canonical" href="{$context->httpResponse->headers[Content-Location]}" n:ifset="$context->httpResponse->headers[Content-Location]">
+</head>
+
+<body>
+<div class="farba">
+	{if $foto}
+		<div class="name">Farba Farbič</div>
+		<img src="images/farba/{$foto->name}" title="{$foto->title}">
+		<div class="title">{$foto->title}</div>
+
+	{else}
+		<div class="unavailable">Farba Farbič teď není k dispozici.<br>Přijďte později.</div>
+
+	{/if}
+</div>
+
+{*
+	<script src="http://www.google-analytics.com/ga.js"></script>
+	<script>
+	<!--
+		var pageTracker = _gat._getTracker("UA-123456");
+		pageTracker._initData();
+		pageTracker._trackPageview();
+	-->
+	</script>
+*}
+</body>
+</html>

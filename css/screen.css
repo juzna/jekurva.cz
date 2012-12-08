@@ -1,0 +1,31 @@
+html {
+	background: #FFF;
+}
+
+body {
+	font-family: 'Sacramento', cursive;
+	padding-top: 80px;
+	text-align: center;
+}
+
+body {
+	color: #4A4D4F;
+	margin: 0 auto;
+}
+
+.farba .unavailable {
+	font-size: 120px;
+}
+
+.farba img {
+    max-width: 100%;
+    max-height: 600px;
+}
+
+.farba .name {
+    font-size: 60px;
+}
+
+.farba .title {
+    font-size: 30px;
+}
